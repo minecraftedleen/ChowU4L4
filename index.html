@@ -9,7 +9,7 @@
           </div>
           <script>
             const years = []
-            const means = []
+            const temps = []
 
             async function getData() {
                 const response = await           fetch("edmund_sample.csv");
@@ -18,16 +18,16 @@
                 rows.forEach((elem) => {
                         const row = elem.split(",");
                         const year = row[0];
-                        const mean = Number(row[1]);
+                        const temp = Number(row[1]);
                         years.push(year)
-                        means.push(mean)
+                        temps.push(temp)
                     
                         });
                     }
 
             getData()
             console.log(years)
-            console.log(means)
+            console.log(temps)
 
             const ctx = document.getElementById('myChart');
             new Chart(ctx, {
@@ -36,8 +36,8 @@
                     labels: years,
                     datasets: [{
                       
-                      label: 'Annual Mean',
-                      data: means,
+                      label: 'Land Surface Air Temperature',
+                      data: temps,
                       borderWidth: 3,
                       borderColor: 'black',
                       backgroundColor: 'black',
@@ -47,7 +47,7 @@
                     plugins:{
                       title: {
                 display: true,    
-                text: 'Global Mean Estimates based on Land and Ocean Data', 
+                text: 'Temperature Anomalies over Land', 
                 align: 'center',   
                 color: 'black',    
                 fullSize: true,    
